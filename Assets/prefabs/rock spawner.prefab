@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3015816088067299648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8397094177703780194}
+  - component: {fileID: 5516893084807774991}
+  m_Layer: 0
+  m_Name: rock spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8397094177703780194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015816088067299648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6087416, y: 2.4772365, z: 0.17252125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5516893084807774991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015816088067299648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8957652e5f8e2b84eb8c6510ffc4ae60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 3018185818417804625, guid: bda119e5dbd49354385d5df203da1d11, type: 3}
+  - {fileID: 3792431539386176132, guid: 6e167ff24cf094c4a8e6c326f934a357, type: 3}
+  - {fileID: 6936896218790573039, guid: 14ac0c3cb3d6996488acd95512da9738, type: 3}
+  - {fileID: 2207665882019660754, guid: 1dbede435640f254dabe0501280c9a39, type: 3}
+  - {fileID: 6445520662946696490, guid: bcb78cdb817dfc942b7fcfaa3889b157, type: 3}
+  - {fileID: 7766426888079918426, guid: 6203de98fd1c29b4a9821f2774f1e314, type: 3}
+  - {fileID: 7766426888079918426, guid: 6203de98fd1c29b4a9821f2774f1e314, type: 3}
+  - {fileID: 7766426888079918426, guid: 6203de98fd1c29b4a9821f2774f1e314, type: 3}
