@@ -7,6 +7,9 @@ public class levelGenerator : MonoBehaviour
     public List<GameObject> tileTypes;
     public GameObject startTile;
     public GameObject enemyPrefab;
+    public float slope = 0f;
+
+
     public float tileLength = 10.0f;
     public int loadingRange = 10;
     private float speed = 0.0f;
@@ -16,12 +19,12 @@ public class levelGenerator : MonoBehaviour
     private float gap = 0;
     private Player player;
 
-
     private void Start()
     {
         player = FindObjectOfType<Player>();
         tileList = new Queue<GameObject>();
         enemyList = new List<GameObject>();
+
         for (int i=0; i< loadingRange/2+1; i++)
         {
             GameObject startPlaneNew = Instantiate(startTile, transform);
@@ -31,10 +34,6 @@ public class levelGenerator : MonoBehaviour
        
     }
 
-
-
-
-
     private void FixedUpdate()
     {
         speed = player.xspeed;
@@ -42,28 +41,19 @@ public class levelGenerator : MonoBehaviour
 
         int tileID = Random.Range(0, tileTypes.Count);
         //move tiles and enemies globally
+        Vector3 dir = new Vector3( -Mathf.Cos(Mathf.Deg2Rad * slope), Mathf.Sin(Mathf.Deg2Rad * slope), 0);
         foreach(GameObject tile in tileList)
         {
-            tile.transform.Translate(Vector3.left*speed*Time.deltaTime);
+            tile.transform.Translate(dir *speed*Time.deltaTime, Space.World);
         }
-        /*
-        foreach(GameObject enemy in enemyList)
-        {
-            enemy.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        }
-        */
+        
 
         if (gap > tileLength)
         {
 
             GameObject newPlaneNew = Instantiate(tileTypes[tileID], transform);
-            newPlaneNew.transform.position = new Vector3(tileLength * (int)(loadingRange/2), 0, 0);
+            newPlaneNew.transform.position = new Vector3(tileLength * (int)(loadingRange/2) * Mathf.Cos(Mathf.Deg2Rad * slope), - tileLength * (int)(loadingRange / 2) * Mathf.Sin(Mathf.Deg2Rad * slope), 0);
             tileList.Enqueue(newPlaneNew);
-            /*
-            GameObject newEnemy = Instantiate(enemyPrefab, transform);
-            newEnemy.transform.position = new Vector3(tileLength * (int)(loadingRange / 2), 0, 0);
-            enemyList.Add(newEnemy);
-            */
             gap = 0.0f;
         }
 
@@ -73,17 +63,7 @@ public class levelGenerator : MonoBehaviour
             Destroy(releaseTile);
         }
 
-        /*
-        foreach(GameObject e in enemyList)
-        {
-            if (e.transform.position.x < -10)
-            {
-                //enemyList.Remove(e);
-               // Destroy(e);
-            }
-        
-        }*/
-        //process enemy
+       
 
 
     }

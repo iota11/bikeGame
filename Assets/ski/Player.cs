@@ -9,11 +9,14 @@ public class Player : MonoBehaviour
     public float xspeed = 10.0f;
     public float wspeed = 0.0f;
     public float inputAngle = 3.1415926f;
-    private Transform transform;
+    private Transform m_transform;
+    private Rigidbody m_Rigidbody;
 
     void Start()
     {
-        transform = GetComponent<Transform>(); 
+        m_transform = GetComponent<Transform>();
+        m_Rigidbody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -21,21 +24,21 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey("left"))
         {
-            transform.RotateAround(transform.position, transform.up, rotateSpeed*Time.deltaTime);
+            m_transform.RotateAround(m_transform.position, m_transform.up, rotateSpeed*Time.deltaTime);
         }
         if (Input.GetKey("right"))
         {
-            transform.RotateAround(transform.position, transform.up, -rotateSpeed*Time.deltaTime);
+            m_transform.RotateAround(m_transform.position, m_transform.up, -rotateSpeed*Time.deltaTime);
         }
 
         float Rotation;
-        if (transform.eulerAngles.y <= 180f)
+        if (m_transform.eulerAngles.y <= 180f)
         {
-            Rotation = transform.eulerAngles.y;
+            Rotation = m_transform.eulerAngles.y;
         }
         else
         {
-            Rotation = transform.eulerAngles.y - 360f;
+            Rotation = m_transform.eulerAngles.y - 360f;
         }
 
 
@@ -44,7 +47,7 @@ public class Player : MonoBehaviour
         xspeed = speed * Mathf.Cos(inputAngle * Mathf.Deg2Rad);
         wspeed = speed * Mathf.Sin(inputAngle * Mathf.Deg2Rad);
 
-        transform.Translate(new Vector3(0,0,-1*wspeed*Time.deltaTime), Space.World); 
+       m_transform.Translate(new Vector3(0,0,-1*wspeed*Time.deltaTime), Space.World); 
 
     }
 }
