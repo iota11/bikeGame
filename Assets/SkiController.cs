@@ -58,6 +58,18 @@ public class SkiController : MonoBehaviour
                 Vector3 forceFriction = m_speed.normalized * forcePressure.magnitude * m_forceFactor;
                 m_speed = Accelerate(m_speed, forcePlane - forceFriction, m_mass);
 
+                //update transform
+                if (Input.GetKey("left"))
+                {
+                    m_speed = Quaternion.AngleAxis(rotateSpeed * Time.deltaTime, Vector3.up) * m_speed;
+
+                }
+                if (Input.GetKey("right"))
+                {
+                    m_speed = Quaternion.AngleAxis(-rotateSpeed * Time.deltaTime, Vector3.up) * m_speed;
+                }
+                m_transform.up = hit.normal;
+                m_transform.forward = m_speed.normalized;
             }
         }
         else
@@ -65,14 +77,7 @@ public class SkiController : MonoBehaviour
             m_speed = Accelerate(m_speed, m_gravity, m_mass);
         }
 
-        if (Input.GetKey("left"))
-        {
-            m_speed = Quaternion.AngleAxis(rotateSpeed * Time.deltaTime, Vector3.up) * m_speed;
-        }
-        if (Input.GetKey("right"))
-        {
-            m_speed = Quaternion.AngleAxis(-rotateSpeed * Time.deltaTime, Vector3.up) * m_speed;
-        }
+        
 
         //update speed
         m_transform.Translate(m_speed * Time.deltaTime, Space.World);
