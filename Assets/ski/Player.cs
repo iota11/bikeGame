@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
     public Vector3 speedDir = new Vector3(0,0,0);
     public float inputAngle = 3.1415926f;
 
-    private Transform m_transform;
-    private Rigidbody m_Rigidbody;
+    public Transform m_transform;
+    //public Rigidbody m_Rigidbody;
     //public Transform ray_transform;
     public float rayDis = 2.0f;
     public float gravity = -10.0f;
@@ -24,16 +24,17 @@ public class Player : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+   
+
+    public void GlobalRotate()
     {
         if (Input.GetKey("left"))
         {
-            m_transform.RotateAround(m_transform.position, m_transform.up, rotateSpeed*Time.deltaTime);
+            m_transform.RotateAround(m_transform.position, new Vector3(0, 1, 0), rotateSpeed * Time.deltaTime);
         }
         if (Input.GetKey("right"))
         {
-            m_transform.RotateAround(m_transform.position, m_transform.up, -rotateSpeed*Time.deltaTime);
+            m_transform.RotateAround(m_transform.position, new Vector3(0,1,0), -rotateSpeed * Time.deltaTime);
         }
 
         float Rotation;
@@ -49,13 +50,12 @@ public class Player : MonoBehaviour
         xspeed = speed * Mathf.Cos(inputAngle * Mathf.Deg2Rad);
         wspeed = speed * Mathf.Sin(inputAngle * Mathf.Deg2Rad);
 
-       m_transform.Translate(new Vector3(0,0,-1*wspeed*Time.deltaTime), Space.World);
-
-        UpdateVerticelSpeed();
-        ApplyVerticalSpeed();
+        m_transform.Translate(new Vector3(0, 0, -1 * wspeed * Time.deltaTime), Space.World);
+    }
+    void SelfMovement()
+    {
 
     }
-
     void UpdateVerticelSpeed()
     {
         // Bit shift the index of the layer (8) to get a bit mask
