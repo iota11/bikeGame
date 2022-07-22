@@ -19,7 +19,12 @@ public class levelGenerator : MonoBehaviour
     private float gap = 0;
     private Player player;
 
-    private void Start()
+    [Header("Random")]
+    public float widthRange = 0.0f;
+    public float degreeRange = 0.0f;
+
+
+private void Start()
     {
         player = FindObjectOfType<Player>();
         tileList = new Queue<GameObject>();
@@ -28,7 +33,7 @@ public class levelGenerator : MonoBehaviour
         for (int i=0; i< loadingRange/2+1; i++)
         {
             GameObject startPlaneNew = Instantiate(startTile, transform);
-            startPlaneNew.transform.position = new Vector3(tileLength*i, 0,0);
+            startPlaneNew.transform.position = new Vector3(tileLength*i, 0,Random.Range(-widthRange/2f, widthRange/2f));
             tileList.Enqueue(startPlaneNew);
         }
        
@@ -52,7 +57,7 @@ public class levelGenerator : MonoBehaviour
         {
 
             GameObject newPlaneNew = Instantiate(tileTypes[tileID], transform);
-            newPlaneNew.transform.position = new Vector3(tileLength * (int)(loadingRange/2) * Mathf.Cos(Mathf.Deg2Rad * slope), - tileLength * (int)(loadingRange / 2) * Mathf.Sin(Mathf.Deg2Rad * slope), 0);
+            newPlaneNew.transform.position = new Vector3(tileLength * (int)(loadingRange/2) * Mathf.Cos(Mathf.Deg2Rad * slope), - tileLength * (int)(loadingRange / 2) * Mathf.Sin(Mathf.Deg2Rad * slope), Random.Range(-widthRange / 2f, widthRange / 2f));
             tileList.Enqueue(newPlaneNew);
             gap = 0.0f;
         }

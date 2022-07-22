@@ -8,6 +8,7 @@ public class FlightController : Player
     public float speed_roll = 50.0f;
     private float angle_roll_ideal = 0.0f;
     private float angle_roll_current = 0.0f;
+    public float angle_roll_max = 40.0f;
     public void FixedUpdate()
     {
         GlobalRotate();
@@ -19,11 +20,11 @@ public class FlightController : Player
         
         if (Input.GetKey("left"))
         {
-            angle_roll_ideal = -60.0f;
+            angle_roll_ideal = -angle_roll_max;
         }
         else if (Input.GetKey("right"))
         {
-            angle_roll_ideal = 60.0f;
+            angle_roll_ideal = angle_roll_max;
         }
         else
         {

@@ -241,17 +241,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651539247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 872fdea1f229cab4abd8eca5372c5aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileTypes: []
-  startTile: {fileID: 0}
+  tileTypes:
+  - {fileID: 5330019150448274902, guid: 8eb1f9abaabab154ab5130742b306440, type: 3}
+  startTile: {fileID: 5330019150448274902, guid: 8eb1f9abaabab154ab5130742b306440, type: 3}
   enemyPrefab: {fileID: 0}
   slope: 0
-  tileLength: 10
-  loadingRange: 10
+  tileLength: 50
+  loadingRange: 30
+  widthRange: 400
+  degreeRange: 0
 --- !u!4 &651539249
 Transform:
   m_ObjectHideFlags: 0
@@ -260,7 +263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651539247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.644316, y: 132.957, z: 34.02256}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -402,6 +405,8 @@ MonoBehaviour:
   slope: 0
   tileLength: 400
   loadingRange: 8
+  widthRange: 0
+  degreeRange: 0
 --- !u!4 &1880621570
 Transform:
   m_ObjectHideFlags: 0
@@ -462,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f310d3a80431e04f9bb452c185ba2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
+  speed: 100
   rotateSpeed: 100
   xspeed: 10
   wspeed: 0
@@ -473,7 +478,8 @@ MonoBehaviour:
   rayDis: 2
   gravity: -10
   body_transform: {fileID: 1938042388}
-  speed_roll: 300
+  speed_roll: 100
+  angle_roll_max: 30
 --- !u!1 &1938042387
 GameObject:
   m_ObjectHideFlags: 0
