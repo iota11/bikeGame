@@ -28,14 +28,7 @@ public class Player : MonoBehaviour
 
     public void GlobalRotate()
     {
-        if (Input.GetKey("left"))
-        {
-            m_transform.RotateAround(m_transform.position, new Vector3(0, 1, 0), rotateSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey("right"))
-        {
-            m_transform.RotateAround(m_transform.position, new Vector3(0,1,0), -rotateSpeed * Time.deltaTime);
-        }
+       
 
         float Rotation;
         if (m_transform.eulerAngles.y <= 180f)

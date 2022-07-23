@@ -44,6 +44,17 @@ public class FlightController : Player
         }
 
         body_transform.localRotation = Quaternion.Euler(angle_roll_current, 0, 0);
+        m_transform.RotateAround(m_transform.position, new Vector3(0, 1, 0), -rotateSpeed * angle_roll_current *0.1f* Time.deltaTime);
+        /*
+        if (Input.GetKey("left"))
+        {
+            m_transform.RotateAround(m_transform.position, new Vector3(0, 1, 0), rotateSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey("right"))
+        {
+            m_transform.RotateAround(m_transform.position, new Vector3(0, 1, 0), -rotateSpeed * Time.deltaTime);
+        }*/
+
 
     }
 }

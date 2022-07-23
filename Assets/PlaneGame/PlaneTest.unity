@@ -251,10 +251,11 @@ MonoBehaviour:
   startTile: {fileID: 5330019150448274902, guid: 8eb1f9abaabab154ab5130742b306440, type: 3}
   enemyPrefab: {fileID: 0}
   slope: 0
+  height: 0
   tileLength: 50
   loadingRange: 30
   widthRange: 400
-  degreeRange: 0
+  degreeRange: 360
 --- !u!4 &651539249
 Transform:
   m_ObjectHideFlags: 0
@@ -263,13 +264,121 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651539247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &673722997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673722999}
+  - component: {fileID: 673722998}
+  m_Layer: 0
+  m_Name: EnemyGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &673722998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673722997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872fdea1f229cab4abd8eca5372c5aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileTypes:
+  - {fileID: 7444720324968656915, guid: 1da23ca74068a64439683c58777d72f5, type: 3}
+  startTile: {fileID: 7444720324968656915, guid: 1da23ca74068a64439683c58777d72f5, type: 3}
+  enemyPrefab: {fileID: 0}
+  slope: 0
+  height: 30
+  tileLength: 100
+  loadingRange: 10
+  widthRange: 400
+  degreeRange: 360
+--- !u!4 &673722999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673722997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &769828303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769828304}
+  - component: {fileID: 769828305}
+  m_Layer: 0
+  m_Name: TowerGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &769828304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769828303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &769828305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769828303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872fdea1f229cab4abd8eca5372c5aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileTypes:
+  - {fileID: 8209604807547318564, guid: e8a302a30be7d8346861b271b4f0fd50, type: 3}
+  startTile: {fileID: 8209604807547318564, guid: e8a302a30be7d8346861b271b4f0fd50, type: 3}
+  enemyPrefab: {fileID: 0}
+  slope: 0
+  height: 0
+  tileLength: 120
+  loadingRange: 10
+  widthRange: 100
+  degreeRange: 0
 --- !u!1 &1482420656
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482420656}
   m_LocalRotation: {x: 0.37358123, y: -0.60036415, z: 0.37358123, w: 0.60036415}
-  m_LocalPosition: {x: 120.3, y: 163.3, z: -0.6}
+  m_LocalPosition: {x: 216, y: 248, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -403,6 +512,7 @@ MonoBehaviour:
   startTile: {fileID: 6820374927065181875, guid: 391ccfd078960fb4080939ea36282c83, type: 3}
   enemyPrefab: {fileID: 0}
   slope: 0
+  height: 0
   tileLength: 400
   loadingRange: 8
   widthRange: 0
@@ -415,7 +525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880621568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.061169, y: 1.327074, z: 6.9036922}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -467,8 +577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f310d3a80431e04f9bb452c185ba2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  rotateSpeed: 100
+  speed: 110
+  rotateSpeed: 40
   xspeed: 10
   wspeed: 0
   yspeed: 0
@@ -480,6 +590,60 @@ MonoBehaviour:
   body_transform: {fileID: 1938042388}
   speed_roll: 100
   angle_roll_max: 30
+--- !u!1 &1937078984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937078986}
+  - component: {fileID: 1937078985}
+  m_Layer: 0
+  m_Name: FoodGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1937078985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937078984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872fdea1f229cab4abd8eca5372c5aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileTypes:
+  - {fileID: 8403470665233880553, guid: 9e813a277962f6144b39c31315b47db6, type: 3}
+  startTile: {fileID: 8403470665233880553, guid: 9e813a277962f6144b39c31315b47db6, type: 3}
+  enemyPrefab: {fileID: 0}
+  slope: 0
+  height: 30
+  tileLength: 70
+  loadingRange: 10
+  widthRange: 100
+  degreeRange: 0
+--- !u!4 &1937078986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937078984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1938042387
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938042387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1079,7 +1243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5339334033555345763}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.5799999, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

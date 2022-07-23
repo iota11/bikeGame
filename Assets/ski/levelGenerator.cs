@@ -8,7 +8,7 @@ public class levelGenerator : MonoBehaviour
     public GameObject startTile;
     public GameObject enemyPrefab;
     public float slope = 0f;
-
+    public float height = 0f;
 
     public float tileLength = 10.0f;
     public int loadingRange = 10;
@@ -33,7 +33,9 @@ private void Start()
         for (int i=0; i< loadingRange/2+1; i++)
         {
             GameObject startPlaneNew = Instantiate(startTile, transform);
-            startPlaneNew.transform.position = new Vector3(tileLength*i, 0,Random.Range(-widthRange/2f, widthRange/2f));
+            startPlaneNew.transform.position = new Vector3(tileLength*i, height,Random.Range(-widthRange/2f, widthRange/2f));
+            //startPlaneNew.transform.localRotation = Quaternion.Euler(0, Random.Range(-degreeRange/2, degreeRange/2),0 );
+            startPlaneNew.transform.Rotate(new Vector3(0, Random.Range(-degreeRange / 2, degreeRange / 2), 0), Space.World);
             tileList.Enqueue(startPlaneNew);
         }
        
@@ -47,6 +49,7 @@ private void Start()
         int tileID = Random.Range(0, tileTypes.Count);
         //move tiles and enemies globally
         Vector3 dir = new Vector3( -Mathf.Cos(Mathf.Deg2Rad * slope), Mathf.Sin(Mathf.Deg2Rad * slope), 0);
+
         foreach(GameObject tile in tileList)
         {
             tile.transform.Translate(dir *speed*Time.deltaTime, Space.World);
@@ -56,9 +59,23 @@ private void Start()
         if (gap > tileLength)
         {
 
-            GameObject newPlaneNew = Instantiate(tileTypes[tileID], transform);
-            newPlaneNew.transform.position = new Vector3(tileLength * (int)(loadingRange/2) * Mathf.Cos(Mathf.Deg2Rad * slope), - tileLength * (int)(loadingRange / 2) * Mathf.Sin(Mathf.Deg2Rad * slope), Random.Range(-widthRange / 2f, widthRange / 2f));
-            tileList.Enqueue(newPlaneNew);
+            GameObject planeNew = Instantiate(tileTypes[tileID], transform);
+            if (slope > 0.001f)
+            {
+                planeNew.transform.position = new Vector3(tileLength * (int)(loadingRange / 2) * Mathf.Cos(Mathf.Deg2Rad * slope),
+                    -tileLength * (int)(loadingRange / 2) * Mathf.Sin(Mathf.Deg2Rad * slope) + height, 
+                    Random.Range(-widthRange / 2f, widthRange / 2f)   );
+            }
+            else
+            {
+                planeNew.transform.position = new Vector3(tileLength * (int)(loadingRange / 2),
+                  height, 
+                  Random.Range(-widthRange / 2f + height,  widthRange / 2f)   );
+            }
+            //planeNew.transform.localRotation = Quaternion.Euler(0, Random.Range(-degreeRange / 2, degreeRange / 2), 0);
+            planeNew.transform.Rotate(new Vector3(0, Random.Range(-degreeRange / 2, degreeRange / 2), 0), Space.World);
+
+            tileList.Enqueue(planeNew);
             gap = 0.0f;
         }
 
