@@ -12,13 +12,13 @@ public class SkiController : MonoBehaviour
     public Vector3 m_gravity = new Vector3(0, -10f, 0);
     public float m_forceFactor = 0.1f;
     public float rotateSpeed = 100.0f;
+    public float initialAngle = 0.0f;
     void Start()
     {
         m_transform = GetComponent<Transform>();
         m_gravity *= m_mass;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         // Bit shift the index of the layer (8) to get a bit mask
@@ -33,13 +33,15 @@ public class SkiController : MonoBehaviour
         {
             if (hit.distance > rayDis)//in the air
             {
-                m_speed = Accelerate(m_speed, m_gravity, m_mass);
+                m_speed = Accelerate(m_speed, m_gravity*m_mass, m_mass);
+
             }
             else 
             {
                 //hit
                 m_transform.position = new Vector3(0, rayDis - hit.distance, 0) + m_transform.position;
                 Vector3 m_speed_old = m_speed;
+                Vector3 hitNormal = new Vector3(0, hit.normal.y, hit.normal.z).normalized;
                 m_speed = PlanProject(m_speed, hit.normal);
                 float cosChange = Vector3.Dot(m_speed_old.normalized, m_speed.normalized);
 
@@ -55,21 +57,34 @@ public class SkiController : MonoBehaviour
                 //calculate force
                 Vector3 forcePlane = PlanProject(m_gravity, hit.normal);
                 Vector3 forcePressure = m_gravity - forcePlane;
-                Vector3 forceFriction = m_speed.normalized * forcePressure.magnitude * m_forceFactor;
+                Vector3 forceFriction = new Vector3(0,0,0);
+                if (m_speed.magnitude >= 5) { //apply fiction
+                    forceFriction = m_speed.normalized * forcePressure.magnitude * m_forceFactor;
+                }
                 m_speed = Accelerate(m_speed, forcePlane - forceFriction, m_mass);
 
                 //update transform
-                if (Input.GetKey("left"))
+                if (Input.GetKey("left") && (initialAngle <= 60))
                 {
                     m_speed = Quaternion.AngleAxis(rotateSpeed * Time.deltaTime, Vector3.up) * m_speed;
-
+                    initialAngle += rotateSpeed * Time.deltaTime;
                 }
-                if (Input.GetKey("right"))
+               else  if (Input.GetKey("right") && (initialAngle >=-60))
                 {
                     m_speed = Quaternion.AngleAxis(-rotateSpeed * Time.deltaTime, Vector3.up) * m_speed;
+                    initialAngle -= rotateSpeed * Time.deltaTime;
+                } else {
+
+                    if (initialAngle >= 0) {
+                        m_speed = Quaternion.AngleAxis(-rotateSpeed * Time.deltaTime, Vector3.up) * m_speed;
+                        initialAngle -= rotateSpeed * Time.deltaTime;
+                    } else {
+                        m_speed = Quaternion.AngleAxis(rotateSpeed * Time.deltaTime, Vector3.up) * m_speed;
+                        initialAngle += rotateSpeed * Time.deltaTime;
+                    }
                 }
                 m_transform.up = hit.normal;
-                m_transform.forward = m_speed.normalized;
+
             }
         }
         else
@@ -77,7 +92,7 @@ public class SkiController : MonoBehaviour
             m_speed = Accelerate(m_speed, m_gravity, m_mass);
         }
 
-        
+        m_transform.forward = m_speed.normalized;
 
         //update speed
         m_transform.Translate(m_speed * Time.deltaTime, Space.World);

@@ -8,6 +8,7 @@ TagManager:
   - Bily
   - Ground
   - Rock
+  - JumpGround
   layers:
   - Default
   - TransparentFX
@@ -15,10 +16,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Obstacles
   - 
   - Ground
-  - 
+  - JumpGround
   - 
   - 
   - 

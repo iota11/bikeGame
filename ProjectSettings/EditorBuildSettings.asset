@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/2DSkiTest/MENU.unity
+    path: Assets/Reference/2DSkiTest/MENU.unity
     guid: 592d17f33406ab343821a50c9c776486
   - enabled: 1
-    path: Assets/2DSkiTest/Main Scene.unity
+    path: Assets/Reference/2DSkiTest/Main Scene.unity
     guid: fc72e0efb6fbaaf4d887a0cbb95812df
   m_configObjects: {}
